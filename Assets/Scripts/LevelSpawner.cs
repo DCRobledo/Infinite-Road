@@ -19,7 +19,6 @@ public class LevelSpawner : MonoBehaviour
                 GameObject insTile = GameObject.Instantiate(roadTile, this.transform);
                 insTile.transform.position = new Vector3(j, i, 0);
                 insTile.transform.name = "RoadTile("+ j +","+ i +")";
-                int var = 0;
             }
         }
     }
