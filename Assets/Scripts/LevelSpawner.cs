@@ -14,6 +14,7 @@ public class LevelSpawner : MonoBehaviour
     {
         cameraGO.transform.position = new Vector3(roadWidth/2f, 0, -10);
 
+        //Automatic Generation of the whole road tile's set
         for (int i = 0; i<roadLength; i++){
             for(int j = 0; j<roadWidth; j++){
                 GameObject insTile = GameObject.Instantiate(roadTile, this.transform);
