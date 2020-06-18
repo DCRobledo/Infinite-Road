@@ -173,7 +173,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 2
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -237,6 +237,12 @@ MonoBehaviour:
   roadLength: 30
   roadWidth: 5
   cameraGO: {fileID: 135783257}
+  leftRoad: {fileID: 21300000, guid: b70218276ffe8a94ea514d61a9194297, type: 3}
+  rightRoad: {fileID: 21300000, guid: c606d79903fe4b7408069c41fcc284ea, type: 3}
+  leftStartRoad: {fileID: 21300000, guid: 1eee6325d2d794148b581fbcbaec8a4e, type: 3}
+  middleStartRoad: {fileID: 21300000, guid: 1962860a9409e19479bb8267765788dc, type: 3}
+  rightStartRoad: {fileID: 21300000, guid: 94dc78686cf4e5a4fa387df743b8c7e0, type: 3}
+  grassTile: {fileID: 21300000, guid: 50ba8c49fe65cc44492d006fd90794fd, type: 3}
 --- !u!4 &1564487158
 Transform:
   m_ObjectHideFlags: 0
