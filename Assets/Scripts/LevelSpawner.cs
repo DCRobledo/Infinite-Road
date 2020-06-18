@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class LevelSpawner : MonoBehaviour
 {
-    public GameObject roadTile;
     public int roadLength = 30;
     public int roadWidth = 5;
 
     public GameObject cameraGO;
+    public GameObject roadTile;
+    public GameObject carObj;
+
 
     public Sprite leftRoad;
     public Sprite rightRoad;
@@ -18,33 +20,15 @@ public class LevelSpawner : MonoBehaviour
     public Sprite rightStartRoad;
 
     public Sprite grassTile;
-    // Start is called before the first frame update
+
+    public float maxYLevel = -1f;
+    public int previousYLevel = -1;
+
     void Start()
     {
         cameraGO.transform.position = new Vector3((roadWidth-1) / 2f, .5f, -10);
 
-        SpawnLevel();
-    }
-
-    private void SpawnLevel()
-    {
         SpawnStartRoad();
-        SpawnGrass();
-
-        for (int i = 0; i < roadLength; i++)
-        {
-            for (int j = 0; j < roadWidth; j++)
-            {
-                GameObject insTile = GameObject.Instantiate(roadTile, this.transform);
-                insTile.transform.position = new Vector3(j, i, 0);
-                insTile.transform.name = "RoadTile(" + j + "," + i + ")";
-
-                if (j == 0)
-                    insTile.GetComponent<SpriteRenderer>().sprite = leftRoad;
-                if (j == roadWidth - 1)
-                    insTile.GetComponent<SpriteRenderer>().sprite = rightRoad;
-            }
-        }
     }
 
     private void SpawnStartRoad()
@@ -60,23 +44,56 @@ public class LevelSpawner : MonoBehaviour
                 insTile.GetComponent<SpriteRenderer>().sprite = leftStartRoad;
             if (x == roadWidth - 1)
                 insTile.GetComponent<SpriteRenderer>().sprite = rightStartRoad;
+            SpawnStartGrass(x);
+        }
+       
+
+    }
+
+    private void SpawnStartGrass(int x)
+    {
+        GameObject insTile = GameObject.Instantiate(roadTile, this.transform);
+        insTile.transform.position = new Vector3(x, -1, 2);
+        insTile.transform.name = "GrassTile(" + x + "," + -1 + ")";
+        insTile.GetComponent<SpriteRenderer>().sprite = grassTile;
+    }
+
+    private void SpawnRoad(float y){
+        for (int x = 0; x < roadWidth; x++) {
+            GameObject insTile = GameObject.Instantiate(roadTile, this.transform);
+            insTile.transform.position = new Vector3(x, y, 0);
+            insTile.transform.name = "RoadTile(" + x + "," + y + ")";
+            insTile.AddComponent<DestroyMe>().carObj = carObj;
+            if (x == 0)
+                insTile.GetComponent<SpriteRenderer>().sprite = leftRoad;
+            if (x == roadWidth - 1)
+                insTile.GetComponent<SpriteRenderer>().sprite = rightRoad;
         }
     }
 
-    public void SpawnGrass(){
-        for(int y = -1; y<roadLength; y++){
-            for(int x=-2; x<roadWidth+2; x++){
-                GameObject insTile = GameObject.Instantiate(roadTile, this.transform);
-                insTile.transform.position = new Vector3(x, y, 2);
-                insTile.transform.name = "RoadTile(" + x + "," + -1 + ")";
-                insTile.GetComponent<SpriteRenderer>().sprite = grassTile;
-            }
+    private void SpawnGrass(float y){
+        for(int x=-2; x<roadWidth+2; x++){
+            GameObject insTile = GameObject.Instantiate(roadTile, this.transform);
+            insTile.transform.position = new Vector3(x, y, 2);
+            insTile.transform.name = "RoadTile(" + x + "," + -1 + ")";
+            insTile.GetComponent<SpriteRenderer>().sprite = grassTile;
+            insTile.AddComponent<DestroyMe>().carObj = carObj;
         }
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        SpawnLevel();
+    }
+
+    private void SpawnLevel()
+    {
+        if (carObj.transform.position.y > maxYLevel-6)
+        {
+            previousYLevel = previousYLevel + 1;
+            SpawnRoad(previousYLevel);
+            SpawnGrass(previousYLevel);
+            maxYLevel = previousYLevel;
+        }
     }
 }
