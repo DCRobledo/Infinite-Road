@@ -174,7 +174,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 3.9
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -218,7 +218,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bc5d406a9eb3a340851b7460c827adf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  offset: {x: 0, y: 3.5}
+  offset: {x: 0, y: 2.3}
   obj: {fileID: 248139510}
 --- !u!1 &248139506 stripped
 GameObject:
@@ -243,6 +243,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: BlackCar
+      objectReference: {fileID: 0}
+    - target: {fileID: 2315273473075306719, guid: 68d48563d16349b4aaacd4963148019c,
+        type: 3}
+      propertyPath: m_TagString
+      value: Car
       objectReference: {fileID: 0}
     - target: {fileID: 3074932582020269089, guid: 68d48563d16349b4aaacd4963148019c,
         type: 3}
@@ -299,7 +304,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 1159195566750380758, guid: 68d48563d16349b4aaacd4963148019c,
+        type: 3}
+      propertyPath: speed
+      value: 5
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: -2199440435485186276, guid: 68d48563d16349b4aaacd4963148019c, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 68d48563d16349b4aaacd4963148019c, type: 3}
 --- !u!1 &1550647866
 GameObject:
@@ -326,7 +337,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1550647866}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9, y: 0, z: 0}
+  m_LocalPosition: {x: -7, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1.5, z: 1}
   m_Children: []
   m_Father: {fileID: 135783260}
@@ -387,12 +398,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d103b7a753388a84eb2665d198585c99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roadWidth: 15
+  roadWidth: 10
   previousYLevel: -10
   roadCollidables:
+  - {fileID: 6582969361013823757, guid: 62065faead2f624488daa22ef508587c, type: 3}
+  - {fileID: 5167220561789192369, guid: 4b13fd080672d8a44b2ca907a0f6036f, type: 3}
+  - {fileID: 9096015581498522553, guid: 00e13fe7895d7c44e844e201652b0928, type: 3}
+  - {fileID: 5235849512077753161, guid: 83d6a46119c3b5b4e88918e3b46275a6, type: 3}
+  - {fileID: 5286069562155615322, guid: d7bb05ad384567a4a963ee0add46c56c, type: 3}
+  - {fileID: 5718761420863237048, guid: 2ffa89f19a3699e4299c4d090c3aae24, type: 3}
+  - {fileID: 8948058511893745632, guid: a32a02b358abca84b9ffecd18ff9c813, type: 3}
+  - {fileID: 1120225077775297007, guid: 30c7910746c8144498f80171463d021c, type: 3}
+  - {fileID: 6369003099008430090, guid: 042945ce176e15e42ac0204294e34075, type: 3}
+  - {fileID: 9173507739874834174, guid: 57d21a962d57d2344bd9af8b2c0fc4a9, type: 3}
+  sideRoadCollidables:
+  - {fileID: 3278074355213081750, guid: e0911c722df3b0548a985003958b94b3, type: 3}
   - {fileID: 9156303418180294392, guid: ff7e9354311e0744b9b19b6b8f61e3d1, type: 3}
   - {fileID: 978332941984707259, guid: 356d5b5eb03bfe34c925bf5b99106cba, type: 3}
   - {fileID: 8372621757264782367, guid: 8922e1d52a2f3b742b0f2c3b3e1b6637, type: 3}
+  - {fileID: 2922635675450258007, guid: adb258d58e00862419b477dace8a5c3d, type: 3}
+  - {fileID: 7577655287145636137, guid: 3039e16da29d1b84a80799502412f943, type: 3}
   cameraGO: {fileID: 135783257}
   roadTile: {fileID: 6095634250470124946, guid: c634b02250b29a448a82e36547e7574e,
     type: 3}
@@ -444,7 +469,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1982647924}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9, y: 0, z: 0}
+  m_LocalPosition: {x: 7, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1.5, z: 1}
   m_Children: []
   m_Father: {fileID: 135783260}
