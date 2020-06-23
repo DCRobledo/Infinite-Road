@@ -400,24 +400,42 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roadWidth: 10
   previousYLevel: -10
+  weightTotalMainRoad: 0
+  weightTotalSideRoad: 0
   roadCollidables:
-  - {fileID: 6582969361013823757, guid: 62065faead2f624488daa22ef508587c, type: 3}
-  - {fileID: 5167220561789192369, guid: 4b13fd080672d8a44b2ca907a0f6036f, type: 3}
-  - {fileID: 9096015581498522553, guid: 00e13fe7895d7c44e844e201652b0928, type: 3}
-  - {fileID: 5235849512077753161, guid: 83d6a46119c3b5b4e88918e3b46275a6, type: 3}
-  - {fileID: 5286069562155615322, guid: d7bb05ad384567a4a963ee0add46c56c, type: 3}
-  - {fileID: 5718761420863237048, guid: 2ffa89f19a3699e4299c4d090c3aae24, type: 3}
-  - {fileID: 8948058511893745632, guid: a32a02b358abca84b9ffecd18ff9c813, type: 3}
-  - {fileID: 1120225077775297007, guid: 30c7910746c8144498f80171463d021c, type: 3}
-  - {fileID: 6369003099008430090, guid: 042945ce176e15e42ac0204294e34075, type: 3}
-  - {fileID: 9173507739874834174, guid: 57d21a962d57d2344bd9af8b2c0fc4a9, type: 3}
+  - obj: {fileID: 9096015581498522553, guid: 00e13fe7895d7c44e844e201652b0928, type: 3}
+    chance: 37
+  - obj: {fileID: 6582969361013823757, guid: 62065faead2f624488daa22ef508587c, type: 3}
+    chance: 27
+  - obj: {fileID: 5235849512077753161, guid: 83d6a46119c3b5b4e88918e3b46275a6, type: 3}
+    chance: 86
+  - obj: {fileID: 5286069562155615322, guid: d7bb05ad384567a4a963ee0add46c56c, type: 3}
+    chance: 42
+  - obj: {fileID: 5167220561789192369, guid: 4b13fd080672d8a44b2ca907a0f6036f, type: 3}
+    chance: 53
+  - obj: {fileID: 8948058511893745632, guid: a32a02b358abca84b9ffecd18ff9c813, type: 3}
+    chance: 19
+  - obj: {fileID: 1120225077775297007, guid: 30c7910746c8144498f80171463d021c, type: 3}
+    chance: 17
+  - obj: {fileID: 9173507739874834174, guid: 57d21a962d57d2344bd9af8b2c0fc4a9, type: 3}
+    chance: 22
+  - obj: {fileID: 6369003099008430090, guid: 042945ce176e15e42ac0204294e34075, type: 3}
+    chance: 14
+  - obj: {fileID: 5718761420863237048, guid: 2ffa89f19a3699e4299c4d090c3aae24, type: 3}
+    chance: 14
   sideRoadCollidables:
-  - {fileID: 3278074355213081750, guid: e0911c722df3b0548a985003958b94b3, type: 3}
-  - {fileID: 9156303418180294392, guid: ff7e9354311e0744b9b19b6b8f61e3d1, type: 3}
-  - {fileID: 978332941984707259, guid: 356d5b5eb03bfe34c925bf5b99106cba, type: 3}
-  - {fileID: 8372621757264782367, guid: 8922e1d52a2f3b742b0f2c3b3e1b6637, type: 3}
-  - {fileID: 2922635675450258007, guid: adb258d58e00862419b477dace8a5c3d, type: 3}
-  - {fileID: 7577655287145636137, guid: 3039e16da29d1b84a80799502412f943, type: 3}
+  - obj: {fileID: 3278074355213081750, guid: e0911c722df3b0548a985003958b94b3, type: 3}
+    chance: 74
+  - obj: {fileID: 9156303418180294392, guid: ff7e9354311e0744b9b19b6b8f61e3d1, type: 3}
+    chance: 12
+  - obj: {fileID: 978332941984707259, guid: 356d5b5eb03bfe34c925bf5b99106cba, type: 3}
+    chance: 42
+  - obj: {fileID: 8372621757264782367, guid: 8922e1d52a2f3b742b0f2c3b3e1b6637, type: 3}
+    chance: 14
+  - obj: {fileID: 7577655287145636137, guid: 3039e16da29d1b84a80799502412f943, type: 3}
+    chance: 10
+  - obj: {fileID: 2922635675450258007, guid: adb258d58e00862419b477dace8a5c3d, type: 3}
+    chance: 46
   cameraGO: {fileID: 135783257}
   roadTile: {fileID: 6095634250470124946, guid: c634b02250b29a448a82e36547e7574e,
     type: 3}
