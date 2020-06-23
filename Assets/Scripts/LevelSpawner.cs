@@ -6,8 +6,11 @@ public class LevelSpawner : MonoBehaviour
 {
     public int roadWidth = 50;
     public int previousYLevel = -1;
+    public int weightTotalMainRoad = 0;
+    public int weightTotalSideRoad = 0;
 
-    public List<GameObject> roadCollidables = new List<GameObject>();
+    public List<CollidableObject> roadCollidables = new List<CollidableObject>();
+    public List<CollidableObject> sideRoadCollidables = new List<CollidableObject>();
 
     public GameObject cameraGO;
     public GameObject roadTile;
@@ -26,6 +29,13 @@ public class LevelSpawner : MonoBehaviour
 
     void Start() {
         cameraGO.transform.position = new Vector3((roadWidth-1) / 2f, .5f, -10);
+
+        foreach (CollidableObject obj in roadCollidables)
+            weightTotalMainRoad += obj.chance;
+
+        foreach (CollidableObject obj in sideRoadCollidables)
+            weightTotalSideRoad += obj.chance;
+
         SpawnStartRoad();
     }
 
@@ -59,26 +69,32 @@ public class LevelSpawner : MonoBehaviour
             insTile.transform.position = new Vector3(x, y, 0);
             insTile.transform.name = "RoadTile(" + x + "," + y + ")";
             insTile.AddComponent<DestroyMe>().carObj = carObj;
+
             if (x == 0)
                 insTile.GetComponent<SpriteRenderer>().sprite = leftRoad;
             if (x == roadWidth - 1)
                 insTile.GetComponent<SpriteRenderer>().sprite = rightRoad;
 
-            SpawnRocks(y, x, insTile);
+            SpawnCollidableObject(y, x, insTile);
         }
     }
 
-    private void SpawnRocks(float y, int x, GameObject insTile)
-    {
+    private void SpawnCollidableObject(float y, int x, GameObject insTile) {
         int rnd = Random.Range(0, 100);
-        if (rnd <= 1 && x >= 0 && x <= roadWidth - 1)
-        {
-            int listRnd = Random.Range(0, roadCollidables.Count - 1);
-            GameObject collidableObj = GameObject.Instantiate(roadCollidables[listRnd]);
-            collidableObj.transform.position = new Vector3(x, y, -5);
-            insTile.transform.name = "Rock(" + x + "," + y + ")";
-            insTile.AddComponent<DestroyMe>().carObj = carObj;
-        }
+
+        if (rnd <= 1 && x >= 0 && x <= roadWidth -1)
+            SpawnCollidable(y, x, insTile, roadCollidables, weightTotalMainRoad);
+
+        else if (rnd >= 90 && (x == -2 || x == -1 || x == roadWidth + 1 || x == roadWidth))
+            SpawnCollidable(y, x, insTile, sideRoadCollidables, weightTotalSideRoad);
+    }
+
+    private void SpawnCollidable(float y, int x, GameObject insTile, List<CollidableObject> list, int weightTotal)
+    {
+        GameObject collidableObj = GameObject.Instantiate(RandomWeighted(weightTotal, list));
+        collidableObj.transform.position = new Vector3(x, y, -5);
+        insTile.transform.name = "Collidable(" + x + "," + y + ")";
+        insTile.AddComponent<DestroyMe>().carObj = carObj;
     }
 
     private GameObject getGOToSpawn(int x){
@@ -104,10 +120,32 @@ public class LevelSpawner : MonoBehaviour
     }
 
     private void SpawnLevel() {
-        if (carObj.transform.position.y > maxYLevel-10){
+        while(carObj.transform.position.y > maxYLevel-10){
             previousYLevel = previousYLevel + 1;
             SpawnRoad(previousYLevel);
             maxYLevel = previousYLevel;
         }
     }
+
+    private GameObject RandomWeighted(int roadTotal, List<CollidableObject> list) {
+        int result = 0;
+        int total = 0;
+        int rndVal = Random.Range(0, roadTotal);
+
+        for (result = 0; result < list.Count; result++)
+        {
+            total += list[result].chance;
+            if(total > rndVal) break;
+        }
+
+        return list[result].obj;
+    }
+}
+
+[System.Serializable]
+public class CollidableObject {
+    public GameObject obj;
+
+    [Range(0, 100)]
+    public int chance;
 }
