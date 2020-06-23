@@ -17,8 +17,8 @@ public class CarController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        rb.AddForce(new Vector2(0, 0.5f));
         CheckInput();
-
     }
 
     private void CheckInput()
