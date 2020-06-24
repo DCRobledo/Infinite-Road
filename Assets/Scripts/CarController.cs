@@ -7,6 +7,8 @@ public class CarController : MonoBehaviour
     Rigidbody2D rb;
 
     public float speed = 1f;
+
+    public bool canMove = true;
     
     // Start is called before the first frame update
     void Start()
@@ -17,8 +19,10 @@ public class CarController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        CheckInput();
-
+        if(canMove){
+            rb.AddForce(new Vector2(0, 0.5f));
+            CheckInput();
+        }
     }
 
     private void CheckInput()

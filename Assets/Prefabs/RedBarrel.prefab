@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2087069828873038666}
   - component: {fileID: 1669118288899396842}
   - component: {fileID: 1596643033227900241}
+  - component: {fileID: 9096470955214826885}
   m_Layer: 0
   m_Name: RedBarrel
   m_TagString: Untagged
@@ -160,3 +161,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fallenSprite: {fileID: 21300000, guid: ba62d1ba9a46d304eb190be38d45054b, type: 3}
+--- !u!114 &9096470955214826885
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5286069562155615322}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2abea47847f83a44a0630dce312f08c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectHit: {fileID: 8300000, guid: d905dbd755d47234fb208335f0d4e26f, type: 3}
