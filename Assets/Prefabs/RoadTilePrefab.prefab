@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7050168597925790297}
   - component: {fileID: 1274423672118330185}
+  - component: {fileID: 5835343511302838041}
   m_Layer: 0
   m_Name: RoadTilePrefab
   m_TagString: Untagged
@@ -80,3 +81,16 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &5835343511302838041
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6095634250470124946}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2abea47847f83a44a0630dce312f08c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectHit: {fileID: 8300000, guid: d905dbd755d47234fb208335f0d4e26f, type: 3}
